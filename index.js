@@ -36,9 +36,22 @@ async function run() {
         // await client.connect();
 
 
+        const usersCollection = client.db('bistrooBossDB').collection('users')
         const menuCollection = client.db('bistrooBossDB').collection('menu')
         const reviewsCollection = client.db('bistrooBossDB').collection('reviews')
         const cartCollection = client.db('bistrooBossDB').collection('carts')
+
+
+
+        // USERS DATA
+        app.post('/users', async (req, res) => {
+            const user = req.body
+            const result = usersCollection.insertOne(user)
+            res.send(result)
+        })
+
+
+
 
 
         // MENU DATA
